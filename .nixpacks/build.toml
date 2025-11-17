@@ -1,0 +1,15 @@
+# .nixpacks/build.toml
+# Ini memberitahu Nixpacks untuk menggunakan PHP dan Node (jika Anda butuh assets)
+providers = ["php", "node"] 
+
+[phases.setup]
+# Perintah untuk instalasi dependensi
+cmds = ["composer install --no-dev --prefer-dist"]
+
+[start]
+# Perintah untuk menjalankan aplikasi
+cmd = "php artisan serve --host 0.0.0.0 --port $PORT"
+
+[settings]
+# Menentukan root direktori web server
+public_dir = "public"
